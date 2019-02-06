@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "3ebbcb38-69f6-4e6b-9ca2-e4fac22f0e4d",
+		"name": "projetoCoordenates",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/coodernates/insertCoordenates",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nameCoodernate\" : \"teste\",\n\t\"coordenateX\" : \"-2\",\n\t\"coordenateY\" : \"23\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/coodernates/insertCoordenates",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coodernates",
+						"insertCoordenates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/coodernates/findReferencesPoint/10",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"coordenateX\" : \"20\",\n\t\"coordenateY\" : 10\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/coodernates/findReferencesPoint/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coodernates",
+						"findReferencesPoint",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/coordenates",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/coordenates",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coordenates"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

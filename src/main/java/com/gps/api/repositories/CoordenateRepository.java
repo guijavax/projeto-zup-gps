@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.gps.api.entities.CoordenatesEntitie;
+import com.gps.api.entities.CoordenatesEntity;
 
-public interface CoordenateRepositorie extends JpaRepository<CoordenatesEntitie, Long>{
+public interface CoordenateRepository extends JpaRepository<CoordenatesEntity, Long>{
 
 @Query(value="select name_coordenates from coordenates "
 		+ "where "

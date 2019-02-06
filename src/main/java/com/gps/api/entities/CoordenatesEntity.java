@@ -16,7 +16,7 @@ import org.springframework.validation.annotation.Validated;
 
 @Entity
 @Table(name="coordenates")
-public class CoordenatesEntitie {
+public class CoordenatesEntity {
 	
 	@Id
 	@Column(name="id_coordenate")

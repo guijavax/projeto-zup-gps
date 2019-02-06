@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.gps.api.entities.CoordenatesEntitie;
-import com.gps.api.repositories.CoordenateRepositorie;
+import com.gps.api.entities.CoordenatesEntity;
+import com.gps.api.repositories.CoordenateRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,15 +27,15 @@ import io.swagger.annotations.ApiResponses;
 
 @Api(value="coordenates")
 @RestController
-@RequestMapping("/coodernates")
+@RequestMapping("/coordenates")
 public class CoordenateController {
 
 	@Autowired
-	private CoordenateRepositorie repositorie;
+	private CoordenateRepository repositorie;
 	
 	@ApiOperation(
 			value="Buscar todos os pois", 
-			response=CoordenatesEntitie.class)
+			response=CoordenatesEntity.class)
 	@ApiResponses(value= {
 			@ApiResponse(
 					code=200, 
@@ -52,13 +52,13 @@ public class CoordenateController {
 	
 	@GetMapping
 	public ResponseEntity<?> findAll() {
-		List<CoordenatesEntitie> coordenates = repositorie.findAll();
+		List<CoordenatesEntity> coordenates = repositorie.findAll();
 		return coordenates.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(coordenates);
 	}
 	
 	@ApiOperation(
 			value="Cadastrar um poi", 
-			response=CoordenatesEntitie.class)
+			response=CoordenatesEntity.class)
 	@ApiResponses(value= {
 			@ApiResponse(
 					code=200, 
@@ -74,8 +74,8 @@ public class CoordenateController {
 	})
 	
 	@PostMapping(value="/insertCoordenates")
-	public ResponseEntity<CoordenatesEntitie> insertCoordenate(@RequestBody CoordenatesEntitie coodernates, HttpServletResponse resp) {
-		CoordenatesEntitie newCoordenates = repositorie.save(coodernates);
+	public ResponseEntity<CoordenatesEntity> insertCoordenate(@RequestBody CoordenatesEntity coodernates, HttpServletResponse resp) {
+		CoordenatesEntity newCoordenates = repositorie.save(coodernates);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/findById/{id}")
 				.buildAndExpand(newCoordenates.getIdCoordenate()).toUri();
 		resp.setHeader("Location", uri.toASCIIString());
@@ -83,14 +83,14 @@ public class CoordenateController {
 	}
 	
 	@GetMapping("/findById/[id}")
-	public ResponseEntity<CoordenatesEntitie> findById(@PathVariable(name="id") Long id) {
-		CoordenatesEntitie coordenates = repositorie.findOne(id);
+	public ResponseEntity<CoordenatesEntity> findById(@PathVariable(name="id") Long id) {
+		CoordenatesEntity coordenates = repositorie.findOne(id);
 		return coordenates != null ? ResponseEntity.ok(coordenates) : ResponseEntity.noContent().build();
 	}
 	
 	@ApiOperation(
 			value="Buscar poi por proximidade", 
-			response=CoordenatesEntitie.class)
+			response=CoordenatesEntity.class)
 	@ApiResponses(value= {
 			@ApiResponse(
 					code=200, 
